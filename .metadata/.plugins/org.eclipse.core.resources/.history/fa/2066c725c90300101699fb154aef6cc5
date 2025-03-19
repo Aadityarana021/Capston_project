@@ -1,0 +1,23 @@
+package stepDefinitions;
+
+import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class CommonSteps {
+    WebDriver driver;
+
+    // ✅ Default constructor (needed for Cucumber)
+    public CommonSteps() {
+    }
+
+    // ✅ Constructor to accept WebDriver
+    public CommonSteps(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    @When("User navigates to Transfer Funds page")
+    public void user_navigates_to_transfer_funds() {
+        driver.findElement(By.id("transfer_funds_tab")).click();
+    }
+}

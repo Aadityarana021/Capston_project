@@ -1,0 +1,114 @@
+//package stepDefinitions;
+//
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import io.cucumber.java.en.*;
+//import io.github.bonigarcia.wdm.WebDriverManager;
+//import pageObjects.LoginPage;
+//import utilities.ScreenshotUtil;
+//import java.util.Scanner;
+//import static org.testng.Assert.*;
+//
+
+
+
+package stepDefinitions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+
+import io.cucumber.java.en.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import utilities.ScreenshotUtil;
+
+import static org.testng.Assert.assertTrue;
+
+public class LoginSteps {
+    WebDriver driver;
+
+    @Given("User opens the Zero Bank login page")
+    public void user_opens_login_page() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("http://zero.webappsecurity.com/login.html");
+    }
+
+    @When("User enters valid username {string} and password {string}")
+    @When("User enters invalid username {string} and password {string}")
+    public void user_enters_credentials(String username, String password) {
+        driver.findElement(By.id("user_login")).sendKeys(username);
+        driver.findElement(By.id("user_password")).sendKeys(password);
+    }
+
+    @And("Clicks on the Sign In button")
+    public void user_clicks_sign_in() {
+        driver.findElement(By.name("submit")).click();
+    }
+
+    @Then("User should be redirected to the Account Summary page")
+    public void verify_account_summary_page() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // ✅ Corrected
+        boolean isTitleCorrect = wait.until(ExpectedConditions.titleContains("Zero"));
+
+        assertTrue(isTitleCorrect, "❌ Login failed! Page title did not match expected value.");
+        ScreenshotUtil.captureScreenshot(driver, "SuccessfulLogin");
+        System.out.println("✅ Login Successful!");
+
+        driver.quit();
+    }
+
+}
+
+
+
+
+//public class LoginSteps {
+//    WebDriver driver;
+//    LoginPage loginPage;
+//
+//    @Given("User opens the Zero Bank login page")
+//    public void user_opens_login_page() {
+//        WebDriverManager.chromedriver().setup();
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.get("http://zero.webappsecurity.com/login.html");
+//        loginPage = new LoginPage(driver);
+//    }
+//
+//    @When("User enters valid username {string} and password {string}")
+//    public void user_enters_valid_credentials(String username, String password) {
+//        loginPage.enterUsername(username);
+//        loginPage.enterPassword(password);
+//    }
+//
+//    @And("Clicks on the Sign In button")
+//    public void user_clicks_sign_in() {
+//        loginPage.clickSignIn();
+//    }
+//
+//    @Then("User should be redirected to the Account Summary page")
+//    public void verify_account_summary_page() {
+//        // Manual Action Required
+//    	System.out.println("Perform manual action (Captcha, 2FA, etc.). Press Enter to continue...");
+//    	Scanner scanner = new Scanner(System.in);
+//    	if (scanner.hasNextLine()) {  // ✅ Prevents NoSuchElementException
+//    	    scanner.nextLine(); 
+//    	}
+//    	scanner.close();
+//
+//
+//        // Capture Screenshot
+//        ScreenshotUtil.captureScreenshot(driver, "SuccessfulLogin");
+//
+//        // Verify if login was successful
+//        assertTrue(driver.getTitle().contains("Zero"), "Login failed!");
+//        System.out.println("Login Successful!");
+//
+//        driver.quit();
+//    }
+//}

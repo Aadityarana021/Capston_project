@@ -1,0 +1,15 @@
+package runners;
+
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+@CucumberOptions(
+        features = "src/test/resources/features/AddNewPayee_TC12.feature", // ✅ Feature file location
+        glue = {"stepDefinitions.accountSummary_TC12"}, // ✅ Step Definitions package
+        plugin = {"pretty", "html:target/cucumber-reports/TC12_Report.html"}, // ✅ Cucumber report
+        monochrome = true, // ✅ Better readability in console
+        tags = "@AddNewPayee" // ✅ Run only this test case
+)
+
+public class AddNewPayeeRunner_TC12 extends AbstractTestNGCucumberTests {
+}

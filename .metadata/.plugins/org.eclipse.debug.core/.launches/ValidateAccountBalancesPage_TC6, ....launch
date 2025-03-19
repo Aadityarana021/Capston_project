@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.testng.eclipse.launchconfig">
+    <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.testng.remote.RemoteTestNG"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Zero_Capston_Project"/>
+    <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
+    <mapAttribute key="org.testng.eclipse.ALL_CLASS_METHODS"/>
+    <listAttribute key="org.testng.eclipse.CLASS_TEST_LIST">
+        <listEntry value="stepDefinitions.accountSummary_TC10.FundTransferFuturePaymentSteps_TC10"/>
+        <listEntry value="runners.TestRunner_TC13"/>
+        <listEntry value="runners.ValidateAccountTypesRunner_TC5"/>
+        <listEntry value="stepDefinitions.InvalidLoginSteps"/>
+        <listEntry value="runners.TestRunner_TC14"/>
+        <listEntry value="stepDefinitions.accountSummary_TC6.ValidateAccountBalancesSteps_TC6"/>
+        <listEntry value="pageObjects.LoginPage"/>
+        <listEntry value="stepDefinitions.accountSummary_TC9.BillPaymentSteps_TC9"/>
+        <listEntry value="pageObjects.AccountSummaryPage_TC4"/>
+        <listEntry value="pageObjects.ValidateAccountTypesPage_TC5"/>
+        <listEntry value="stepDefinitions.CommonSteps1"/>
+        <listEntry value="stepDefinitions.accountSummary_TC8.FundTransferNegativeAmountSteps_TC8"/>
+        <listEntry value="pageObjects.ValidateAccountBalancesPage_TC6"/>
+        <listEntry value="runners.EmptyLoginRunner"/>
+        <listEntry value="stepDefinitions.accountSummary_TC15.LogoutSteps_TC15"/>
+        <listEntry value="stepDefinitions.accountSummary_TC12.AddNewPayeeSteps_TC12"/>
+        <listEntry value="pageObjects.FundTransferFuturePaymentPage_TC10"/>
+        <listEntry value="pageObjects.FundTransferNegativeAmountPage_TC8"/>
+        <listEntry value="pageObjects.BillPaymentPage_TC9"/>
+        <listEntry value="stepDefinitions.accountSummary_TC4.AccountSummaryLoginSteps_TC4"/>
+        <listEntry value="stepDefinitions.accountSummary_TC13.AddNewPayeeMissingDetailsSteps_TC13"/>
+        <listEntry value="stepDefinitions.accountSummary_TC14.ViewOnlineStatementsSteps_TC14"/>
+        <listEntry value="stepDefinitions.Hooks"/>
+        <listEntry value="runners.BillPaymentRunner_TC9"/>
+        <listEntry value="runners.PayBillsEmptyAmountRunner_TC11"/>
+        <listEntry value="stepDefinitions.LoginSteps"/>
+        <listEntry value="runners.FundTransferFuturePaymentRunner_TC10"/>
+        <listEntry value="runners.TestRunner_15"/>
+        <listEntry value="stepDefinitions.accountSummary_TC4.AccountSummarySteps_TC4"/>
+        <listEntry value="stepDefinitions.EmptyLoginSteps"/>
+        <listEntry value="stepDefinitions.accountSummary_TC11.PayBillsEmptyAmountSteps_TC11"/>
+        <listEntry value="stepDefinitions.accountSummary_TC5.ValidateAccountTypesSteps_TC5"/>
+        <listEntry value="utilities.ScreenshotUtil"/>
+        <listEntry value="pageObjects.FundTransferInsufficientBalancePage_TC7"/>
+        <listEntry value="runners.FundTransferInsufficientBalanceRunner_TC7"/>
+        <listEntry value="runners.ValidateAccountBalancesRunner_TC6"/>
+        <listEntry value="runners.AddNewPayeeRunner_TC12"/>
+        <listEntry value="stepDefinitions.accountSummary_TC7.FundTransferInsufficientBalanceSteps_TC7"/>
+        <listEntry value="stepDefinitions.CommonSteps"/>
+        <listEntry value="runners.TestRunner"/>
+        <listEntry value="runners.FundTransferNegativeAmountRunner_TC8"/>
+        <listEntry value="runners.InvalidLoginRunner"/>
+        <listEntry value="runners.AccountSummaryRunner_TC4"/>
+    </listAttribute>
+    <listAttribute key="org.testng.eclipse.METHOD_TEST_LIST"/>
+    <listAttribute key="org.testng.eclipse.PACKAGE_TEST_LIST"/>
+    <stringAttribute key="org.testng.eclipse.PRE_DEFINED_LISTENERS" value=""/>
+    <intAttribute key="org.testng.eclipse.TYPE" value="1"/>
+</launchConfiguration>

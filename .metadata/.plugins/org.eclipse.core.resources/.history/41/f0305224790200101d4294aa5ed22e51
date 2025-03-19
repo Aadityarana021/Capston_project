@@ -1,0 +1,15 @@
+package runners;
+
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+@CucumberOptions(
+        features = "src/test/resources/features/ValidateAccountBalances_TC6",
+        glue = "stepDefinitions.accountSummary_TC6",
+        plugin = {"pretty", "html:target/cucumber-reports/TC6_Report.html"},
+        monochrome = true,
+        tags = "@ValidateAccountBalances"
+)
+
+public class ValidateAccountBalancesRunner_TC6 extends AbstractTestNGCucumberTests {
+}

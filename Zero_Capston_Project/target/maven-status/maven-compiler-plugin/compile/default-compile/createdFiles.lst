@@ -1,0 +1,9 @@
+pageObjects\FundTransferNegativeAmountPage_TC8.class
+pageObjects\ValidateAccountTypesPage_TC5.class
+pageObjects\LoginPage.class
+pageObjects\FundTransferFuturePaymentPage_TC10.class
+pageObjects\ValidateAccountBalancesPage_TC6.class
+pageObjects\FundTransferInsufficientBalancePage_TC7.class
+utilities\ScreenshotUtil.class
+pageObjects\AccountSummaryPage_TC4.class
+pageObjects\BillPaymentPage_TC9.class

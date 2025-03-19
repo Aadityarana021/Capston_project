@@ -1,0 +1,26 @@
+package stepDefinitions.accountSummary_TC7;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import pageObjects.FundTransferInsufficientBalancePage_TC7;
+import stepDefinitions.CommonSteps;
+import stepDefinitions.accountSummary_TC4.AccountSummaryLoginSteps_TC4;
+
+public class FundTransferInsufficientBalanceSteps_TC7 {
+    WebDriver driver;
+    FundTransferInsufficientBalancePage_TC7 transferFundsPage;
+    CommonSteps commonSteps;
+
+    public FundTransferInsufficientBalanceSteps_TC7() {
+        this.driver = AccountSummaryLoginSteps_TC4.getDriver(); // ✅ Get driver from TC4
+        this.transferFundsPage = new FundTransferInsufficientBalancePage_TC7(driver);
+        this.commonSteps = new CommonSteps(driver); // ✅ Use fixed CommonSteps
+    }
+
+    @When("User enters an amount greater than the available balance")
+    public void user_enters_excess_amount() {
+        transferFundsPage.enterExcessAmount(); // ✅ Now this method exists and works!
+    }
+}

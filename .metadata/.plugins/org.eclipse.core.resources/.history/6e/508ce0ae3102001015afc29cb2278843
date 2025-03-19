@@ -1,0 +1,30 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class AccountSummaryPage {
+    WebDriver driver;
+
+    public AccountSummaryPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    @FindBy(linkText = "Account Summary") private WebElement accountSummaryLink;
+    @FindBy(xpath = "//h2[text()='Cash Accounts']") private WebElement cashAccounts;
+    @FindBy(xpath = "//h2[text()='Investment Accounts']") private WebElement investmentAccounts;
+    @FindBy(xpath = "//h2[text()='Credit Accounts']") private WebElement creditAccounts;
+    @FindBy(xpath = "//h2[text()='Loan Accounts']") private WebElement loanAccounts;
+
+    public void goToAccountSummary() {
+        accountSummaryLink.click();
+    }
+
+    public boolean isAccountSummaryDisplayed() {
+        return cashAccounts.isDisplayed() && investmentAccounts.isDisplayed()
+                && creditAccounts.isDisplayed() && loanAccounts.isDisplayed();
+    }
+}

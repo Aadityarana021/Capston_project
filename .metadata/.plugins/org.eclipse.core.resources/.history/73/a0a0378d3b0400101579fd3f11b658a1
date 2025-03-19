@@ -1,0 +1,14 @@
+package runners;
+
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+@CucumberOptions(
+    features = "src/test/resources/features/Login.feature",
+    glue = "stepDefinitions", // ✅ Correct Glue Path
+    plugin = {"pretty", "html:target/cucumber-reports/Login.html"},
+    monochrome = true,
+    tags = "@Login"
+)
+public class LoginRunner extends AbstractTestNGCucumberTests {
+}

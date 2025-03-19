@@ -1,0 +1,7 @@
+Feature: Verify Session Expiry After Logout
+
+  @SessionExpiry
+  Scenario: Validate that user cannot access previous pages after logout
+    When User clicks on the Logout button
+    And User clicks the Back button in the browser
+    Then User should not be able to access the previous page

@@ -1,0 +1,37 @@
+package stepDefinitions;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.cucumber.java.en.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import pageObjects.AccountSummaryLoginPage;
+import static org.testng.Assert.*;
+
+public class AccountSummaryLoginSteps {
+    static WebDriver driver;
+    AccountSummaryLoginPage loginPage;
+
+    @Given("User logs into Zero Bank for Account Summary")
+    public void user_logs_into_zero_bank() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("http://zero.webappsecurity.com/login.html");
+
+        loginPage = new AccountSummaryLoginPage(driver);
+        loginPage.enterUsername("username");  // Use correct username
+        loginPage.enterPassword("password");  // Use correct password
+        loginPage.clickSignIn();
+
+        // Wait for manual action (Captcha, 2FA, etc.)
+        loginPage.waitForManualAction();
+
+        // Verify login was successful
+        assertTrue(driver.getTitle().contains("Zero - Account Summary"), "Login failed!");
+    }
+
+    // ✅ Getter method to reuse WebDriver for another test case
+    public static WebDriver getDriver() {
+        return driver;
+    }
+}

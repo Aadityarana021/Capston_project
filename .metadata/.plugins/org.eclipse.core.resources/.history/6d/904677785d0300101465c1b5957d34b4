@@ -1,0 +1,15 @@
+package stepDefinitions;
+
+import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import stepDefinitions.Hooks;
+
+public class CommonSteps {
+    WebDriver driver = Hooks.getDriver();
+
+    @When("User navigates to the Transfer Funds page")
+    public void user_navigates_to_transfer_funds() {
+        driver.findElement(By.id("transfer_funds_tab")).click();
+    }
+}

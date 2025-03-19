@@ -1,0 +1,72 @@
+//package stepDefinitions.accountSummary_TC6;
+//
+//import org.openqa.selenium.WebDriver;
+//import io.cucumber.java.en.When;
+//import io.cucumber.java.en.Then;
+//import org.testng.Assert;
+//import pageObjects.ValidateAccountBalancesPage_TC6;
+//import stepDefinitions.accountSummary_TC4.AccountSummaryLoginSteps_TC4;  // ✅ Use Test Case 4’s driver
+//
+
+
+
+package stepDefinitions;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class ValidateAccountBalancesSteps_TC6 {
+    WebDriver driver;
+    CommonSteps commonSteps;
+
+    public ValidateAccountBalancesSteps_TC6() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        commonSteps = new CommonSteps(driver);  // ✅ Passing WebDriver to CommonSteps
+    }
+}
+
+
+//public class ValidateAccountBalancesSteps_TC6 {
+//
+//    WebDriver driver = AccountSummaryLoginSteps_TC4.getDriver();  // ✅ Reuse TC4 login session
+//    ValidateAccountBalancesPage_TC6 transferFundsPage;
+//
+//    public ValidateAccountBalancesSteps_TC6() {
+//        transferFundsPage = new ValidateAccountBalancesPage_TC6(driver);
+//    }
+//
+//    @When("User navigates to Transfer Funds page")
+//    public void user_navigates_to_transfer_funds() {
+//        transferFundsPage.navigateToTransferFunds();  // ✅ Navigate from Account Summary to Transfer Funds
+//    }
+//
+//    @When("User selects From Account and To Account")
+//    public void user_selects_accounts() {
+//        transferFundsPage.selectAccountsAndAmount();  // ✅ Select accounts and amount
+//    }
+//
+//    @When("User clicks on Continue")
+//    public void user_clicks_continue() {
+//        transferFundsPage.clickSubmit();  // ✅ Click submit button
+//    }
+//
+//    @Then("User should see the transfer confirmation")
+//    public void verify_transfer_success() {
+//        String successMsg = transferFundsPage.getSuccessMessage();
+//        String expectedMessage = "You successfully transferred $1000 from Account A to Account B";
+//
+//        // ✅ Print both actual and expected message for debugging
+//        System.out.println("Expected Message: " + expectedMessage);
+//        System.out.println("Actual Message: " + successMsg);
+//
+//        // ✅ Check if the actual message matches exactly
+//        Assert.assertTrue(successMsg.contains("You successfully submitted your transaction."), "Transfer failed!");
+//
+//        // ✅ Print confirmation if assertion passes
+//        System.out.println("✔ Transfer Success: " + successMsg);
+//    }
+//    }
+//

@@ -1,0 +1,42 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import java.util.Scanner;
+
+public class AccountSummaryLoginPage {
+    WebDriver driver;
+
+    // Constructor
+    public AccountSummaryLoginPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    // Locators
+    @FindBy(id = "user_login") private WebElement usernameInput;
+    @FindBy(id = "user_password") private WebElement passwordInput;
+    @FindBy(name = "submit") private WebElement signInButton;
+
+    // Actions
+    public void enterUsername(String username) {
+        usernameInput.sendKeys(username);
+    }
+
+    public void enterPassword(String password) {
+        passwordInput.sendKeys(password);
+    }
+
+    public void clickSignIn() {
+        signInButton.click();
+    }
+
+    public void waitForManualAction() {
+        System.out.println("Perform manual action (Captcha, 2FA, etc.). Press Enter to continue...");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine(); // Wait for user input
+        scanner.close();
+    }
+}

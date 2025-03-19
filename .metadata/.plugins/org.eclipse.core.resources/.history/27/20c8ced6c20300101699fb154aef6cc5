@@ -1,0 +1,40 @@
+package stepDefinitions.accountSummary_TC16;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import io.cucumber.java.en.*;
+import static org.testng.Assert.assertTrue;
+import java.time.Duration;
+
+public class SessionExpirySteps_TC16 {
+    WebDriver driver;
+    WebDriverWait wait;
+
+    public SessionExpirySteps_TC16() {
+        // Ensure driver is retrieved from a static method or already initialized
+        this.driver = stepDefinitions.accountSummary_TC4.AccountSummaryLoginSteps_TC4.getDriver();
+        if (driver == null) {
+            throw new IllegalStateException("WebDriver is not initialized. Ensure login is performed first.");
+        }
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+    @When("User clicks on the Logout button")
+    public void user_clicks_on_logout_button() {
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("settingsBox"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("logout_link"))).click();
+    }
+
+    @And("User clicks the Back button in the browser")
+    public void user_clicks_back_button() {
+        driver.navigate().back();
+    }
+
+    @Then("User should not be able to access the previous page")
+    public void verify_session_expiry() {
+        assertTrue(driver.getCurrentUrl().contains("login.html"), "❌ User was able to access the previous page!");
+        System.out.println("✅ Session expired successfully! User redirected to login page.");
+    }
+}

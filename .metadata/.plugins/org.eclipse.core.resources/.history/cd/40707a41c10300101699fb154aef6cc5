@@ -1,0 +1,9 @@
+Feature: Verify Session Expiry After Logout
+
+  @SessionExpiry
+  Scenario: Validate that user cannot access previous pages after logout
+    Given User logs into Zero Bank for Account Summary TC4
+    When User clicks on the Logout button
+    Then User should be redirected to the login page
+    And User clicks the browser back button
+    Then User should not be able to access the previous page after logout

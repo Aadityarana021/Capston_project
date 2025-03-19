@@ -1,0 +1,15 @@
+Feature: Login to Zero Bank
+
+  @InvalidLogin
+  Scenario: User enters incorrect credentials
+    Given User opens the Zero Bank login page for Invalid Login
+    When User enters invalid username "wrongUser" and password "wrongPass" for Invalid Login
+    And Clicks on the Sign In button for Invalid Login
+    Then User should see an error message "Login and/or password are wrong." for Invalid Login
+
+  @Login
+  Scenario: User logs in successfully
+    Given User opens the Zero Bank login page
+    When User enters valid username "username" and password "password"
+    And Clicks on the Sign In button
+    Then User should be redirected to the Account Summary page

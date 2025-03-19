@@ -1,0 +1,28 @@
+package stepDefinitions;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import io.cucumber.java.en.When;
+import pageObjects.ValidateAccountBalancesPage_TC6;
+
+import java.time.Duration;
+
+public class CommonSteps {
+    WebDriver driver;
+    ValidateAccountBalancesPage_TC6 accountBalancesPage;
+    WebDriverWait wait;
+
+    public CommonSteps() {
+        this.driver = stepDefinitions.accountSummary_TC4.AccountSummaryLoginSteps_TC4.getDriver();
+        this.accountBalancesPage = new ValidateAccountBalancesPage_TC6(driver);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+    }
+
+    @When("User navigates to Transfer Funds page")
+    public void user_navigates_to_transfer_funds() {
+        wait.until(ExpectedConditions.elementToBeClickable(accountBalancesPage.getOnlineBankingLink())).click();
+        wait.until(ExpectedConditions.elementToBeClickable(accountBalancesPage.getAccountSummaryLink())).click();
+        wait.until(ExpectedConditions.elementToBeClickable(accountBalancesPage.getTransferFundsTab())).click();
+    }
+}

@@ -1,0 +1,65 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class ValidateAccountBalancesPage_TC6 {
+    WebDriver driver;
+    WebDriverWait wait;
+
+    public ValidateAccountBalancesPage_TC6(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // ✅ Wait added
+        PageFactory.initElements(driver, this);
+    }
+
+    // ✅ Locators
+    @FindBy(id = "transfer_funds_tab")
+    private WebElement transferFundsTab;
+
+    @FindBy(id = "tf_fromAccountId")
+    private WebElement fromAccountDropdown;
+
+    @FindBy(xpath = "//select[@id='tf_fromAccountId']//option[@value='1'][normalize-space()='Savings(Avail. balance = $ 1000)']")
+    private WebElement fromAccountOption;
+
+    @FindBy(id = "tf_toAccountId")
+    private WebElement toAccountDropdown;
+
+    @FindBy(xpath = "//select[@id='tf_toAccountId']//option[@value='1'][normalize-space()='Savings(Avail. balance = $ 1000)']")
+    private WebElement toAccountOption;
+
+    @FindBy(id = "btn_submit")
+    private WebElement submitButton;
+
+    // ✅ Navigate to "Transfer Funds"
+    public void navigateToTransferFunds() {
+        wait.until(ExpectedConditions.elementToBeClickable(transferFundsTab)).click();
+    }
+
+    // ✅ Select From Account
+    public void selectFromAccount() {
+        wait.until(ExpectedConditions.elementToBeClickable(fromAccountDropdown)).click();
+        Select fromAccountSelect = new Select(fromAccountDropdown);
+        fromAccountSelect.selectByValue("1");
+    }
+
+    // ✅ Select To Account
+    public void selectToAccount() {
+        wait.until(ExpectedConditions.elementToBeClickable(toAccountDropdown)).click();
+        Select toAccountSelect = new Select(toAccountDropdown);
+        toAccountSelect.selectByValue("1");
+    }
+
+    // ✅ Click Submit
+    public void clickSubmit() {
+        wait.until(ExpectedConditions.elementToBeClickable(submitButton)).click();
+    }
+}

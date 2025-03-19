@@ -1,0 +1,34 @@
+//package utilities;
+//
+//import com.itextpdf.kernel.pdf.PdfDocument;
+//import com.itextpdf.kernel.pdf.PdfWriter;
+//import com.itextpdf.layout.Document;
+//import com.itextpdf.layout.element.Paragraph;
+//import java.io.File;
+//import java.io.IOException;
+//
+//public class PdfUtil {
+//    public static void savePDF(String content, String fileName) {
+//        try {
+//            // Define the folder path like screenshots
+//            String folderPath = "pdf_reports/";
+//            File directory = new File(folderPath);
+//            if (!directory.exists()) {
+//                directory.mkdirs(); // Create directory if it doesn't exist
+//            }
+//
+//            // Define the file path
+//            String filePath = folderPath + fileName + ".pdf";
+//
+//            // Create PDF document
+//            PdfDocument pdf = new PdfDocument(new PdfWriter(filePath));
+//            Document document = new Document(pdf);
+//            document.add(new Paragraph(content));
+//            document.close();
+//
+//            System.out.println("✅ PDF saved at: " + filePath);
+//        } catch (IOException e) {
+//            System.out.println("❌ Failed to save PDF: " + e.getMessage());
+//        }
+//    }
+//}

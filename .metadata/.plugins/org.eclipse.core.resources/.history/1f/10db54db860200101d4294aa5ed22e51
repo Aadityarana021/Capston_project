@@ -1,0 +1,41 @@
+package stepDefinitions.accountSummary_TC6;
+
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import pageObjects.ValidateAccountBalancesPage_TC6;
+
+public class ValidateAccountBalancesSteps_TC6 {
+
+    WebDriver driver;  // ✅ Initialize WebDriver properly
+    ValidateAccountBalancesPage_TC6 validateAccountBalancesPage;
+
+    public ValidateAccountBalancesSteps_TC6() {
+        this.driver = new ChromeDriver(); // ✅ Instantiate ChromeDriver
+        this.validateAccountBalancesPage = new ValidateAccountBalancesPage_TC6(driver);
+    }
+
+    @When("User navigates to Transfer Funds page")
+    public void user_navigates_to_transfer_funds() {
+        validateAccountBalancesPage.navigateToTransferFunds();
+    }
+
+    @When("User selects From Account and To Account")
+    public void user_selects_accounts() {
+        validateAccountBalancesPage.selectAccountsAndAmount();
+    }
+
+    @When("User clicks on Continue")
+    public void user_clicks_continue() {
+        validateAccountBalancesPage.clickSubmit();
+    }
+
+    @Then("User should see the transfer confirmation")
+    public void verify_transfer_success() {
+        String expectedMessage = "You successfully transferred $1000 from Account A to Account B";
+        Assert.assertTrue(validateAccountBalancesPage.getSuccessMessage().contains(expectedMessage),
+                "Transfer Failed: Success message not displayed!");
+    }
+}

@@ -1,0 +1,20 @@
+package testRunner;
+
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+@CucumberOptions(
+    features = "src/test/resources/features/SessionExpiry_TC16.feature", // Path to feature file
+    glue = {"stepDefinitions.sessionExpiry_TC16"}, // Step definition package
+    plugin = {
+        "pretty",
+        "html:target/cucumber-reports/sessionExpiryReport.html", // Generates HTML report
+        "json:target/cucumber-reports/sessionExpiryReport.json", // Generates JSON report
+        "junit:target/cucumber-reports/sessionExpiryReport.xml" // Generates JUnit XML report
+    },
+    monochrome = true, // Makes console output readable
+    dryRun = false, // Set to true to check if step definitions are missing without executing tests
+    tags = "@SessionExpiry" // Run only scenarios with this tag (if needed)
+)
+public class TestRunner_TC16 extends AbstractTestNGCucumberTests {
+}

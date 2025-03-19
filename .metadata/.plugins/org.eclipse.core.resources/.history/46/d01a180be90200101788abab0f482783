@@ -1,0 +1,65 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+
+public class FundTransferInsufficientBalancePage_TC7 {
+    WebDriver driver;
+    WebDriverWait wait;
+
+    public FundTransferInsufficientBalancePage_TC7(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        PageFactory.initElements(driver, this);
+    }
+
+    // ✅ Transfer Funds Tab
+    @FindBy(id = "transfer_funds_tab")
+    private WebElement transferFundsTab;
+
+    // ✅ From Account Dropdown
+    @FindBy(id = "tf_fromAccountId")
+    private WebElement fromAccountDropdown;
+
+    // ✅ To Account Dropdown
+    @FindBy(id = "tf_toAccountId")
+    private WebElement toAccountDropdown;
+
+    // ✅ Amount Input Field
+    @FindBy(id = "tf_amount")
+    private WebElement amountInput;
+
+    // ✅ Submit Button
+    @FindBy(id = "btn_submit")
+    private WebElement submitButton;
+
+    // ✅ Error Message (for Insufficient Funds)
+    @FindBy(xpath = "//div[contains(@class, 'alert-danger')]")
+    private WebElement errorMessage;
+
+    public void navigateToTransferFunds() {
+        wait.until(ExpectedConditions.elementToBeClickable(transferFundsTab)).click();
+    }
+
+    public void selectInsufficientFundsAccount() {
+        wait.until(ExpectedConditions.elementToBeClickable(fromAccountDropdown)).sendKeys("2"); // Assume Account ID 2 has insufficient funds
+        wait.until(ExpectedConditions.elementToBeClickable(toAccountDropdown)).sendKeys("3"); // Assume Account ID 3 is valid
+    }
+
+    public void enterExcessAmount() {
+        amountInput.sendKeys("999999"); // Entering an amount greater than available balance
+    }
+
+    public void clickSubmit() {
+        wait.until(ExpectedConditions.elementToBeClickable(submitButton)).click();
+    }
+
+    public String getErrorMessage() {
+        return wait.until(ExpectedConditions.visibilityOf(errorMessage)).getText();
+    }
+}

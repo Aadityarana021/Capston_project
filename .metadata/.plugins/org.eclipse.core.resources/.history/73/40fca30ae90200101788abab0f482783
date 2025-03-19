@@ -1,0 +1,46 @@
+package stepDefinitions.accountSummary_TC7;
+
+import org.openqa.selenium.WebDriver;
+import io.cucumber.java.en.*;
+import pageObjects.FundTransferInsufficientBalancePage_TC7;
+import stepDefinitions.accountSummary_TC4.AccountSummaryLoginSteps_TC4;
+import static org.testng.Assert.*;
+
+public class FundTransferInsufficientBalanceSteps_TC7 {
+    WebDriver driver = AccountSummaryLoginSteps_TC4.getDriver();  
+    FundTransferInsufficientBalancePage_TC7 fundTransferPage;
+
+    @When("User navigates to Transfer Funds page")
+    public void user_navigates_to_transfer_funds() {
+        fundTransferPage = new FundTransferInsufficientBalancePage_TC7(driver);
+        fundTransferPage.navigateToTransferFunds();
+    }
+
+    @And("User selects an account with insufficient funds as {string}")
+    public void user_selects_insufficient_funds_account(String accountType) {
+        fundTransferPage.selectInsufficientFundsAccount();
+    }
+
+    @And("User enters an amount greater than the available balance")
+    public void user_enters_excess_amount() {
+        fundTransferPage.enterExcessAmount();
+    }
+
+    @And("User clicks on Submit")
+    public void user_clicks_submit() {
+        fundTransferPage.clickSubmit();
+    }
+
+    @Then("User should see an error message {string}")
+    public void verify_error_message(String expectedMessage) {
+        String actualMessage = fundTransferPage.getErrorMessage();
+        System.out.println("Error Message Retrieved: " + actualMessage);
+        assertEquals(actualMessage, expectedMessage, "Error message mismatch!");
+    }
+
+    @And("Transfer should not be processed")
+    public void transfer_should_not_be_processed() {
+        assertTrue(fundTransferPage.getErrorMessage().contains("Insufficient funds"), "Transfer was processed incorrectly!");
+        driver.quit();
+    }
+}
