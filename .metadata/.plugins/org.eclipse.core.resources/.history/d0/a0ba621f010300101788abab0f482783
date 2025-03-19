@@ -1,5 +1,0 @@
-package stepDefinitions.accountSummary_TC8;
-
-public class FundTransferNegativeAmountSteps_TC8 {
-
-}

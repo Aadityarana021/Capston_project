@@ -1,5 +1,0 @@
-package runners;
-
-public class FundTransferNegativeAmountRunner_TC8 {
-
-}

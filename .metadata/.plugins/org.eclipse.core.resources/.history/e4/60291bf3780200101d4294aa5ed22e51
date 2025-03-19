@@ -1,5 +1,0 @@
-package stepDefinitions.accountSummary_TC6;
-
-public class ValidateAccountBalancesSteps_TC6 {
-
-}

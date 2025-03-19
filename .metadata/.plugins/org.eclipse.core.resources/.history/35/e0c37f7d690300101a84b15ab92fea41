@@ -1,5 +1,0 @@
-package stepDefinitions.accountSummary_TC11;
-
-public class PayBillsEmptyAmountSteps_TC11 {
-
-}

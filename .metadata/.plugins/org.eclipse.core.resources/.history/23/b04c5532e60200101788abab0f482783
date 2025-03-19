@@ -1,5 +1,0 @@
-package stepDefinitions.accountSummary_TC7;
-
-public class FundTransferInsufficientBalanceSteps_TC7 {
-
-}

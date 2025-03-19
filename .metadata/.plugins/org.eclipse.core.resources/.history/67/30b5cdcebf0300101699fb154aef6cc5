@@ -1,5 +1,0 @@
-package stepDefinitions.accountSummary_TC16;
-
-public class VerifySessionExpirySteps_TC16 {
-
-}

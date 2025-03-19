@@ -1,7 +1,0 @@
-Feature: Verify Session Expiry After Logout
-
-  Scenario: User should not be able to access the previous page after logout
-    Given User is logged into the application
-    When User logs out of the application
-    And User clicks the Back button in the browser
-    Then User should not be able to access the previous page
